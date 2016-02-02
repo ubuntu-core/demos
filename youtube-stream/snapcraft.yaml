@@ -1,0 +1,22 @@
+name: yt-streamer
+version: 0.3
+vendor: Pedro Coca <Pedro.Coca@canonical.com>
+
+services:
+    yt-streamer:
+      start: bin/yt-streamer.sh
+      description: A simple video stream to youtube
+      security-template: unconfined
+
+summary: A simple video stream to youtube
+description: A simple video stream to youtube
+icon: yt-streamer_icon.png
+
+
+parts:
+  yt-streamer:
+    security-template: unconfined
+    plugin: copy
+    files:
+        yt-streamer.sh: bin/yt-streamer.sh
+        ffmpeg: bin/ffmpeg
