@@ -1,6 +1,7 @@
 name: yt-streamer
 version: 0.3
 vendor: Pedro Coca <Pedro.Coca@canonical.com>
+config: ./config.py
 
 services:
     yt-streamer:
@@ -20,3 +21,4 @@ parts:
     files:
         yt-streamer.sh: bin/yt-streamer.sh
         ffmpeg: bin/ffmpeg
+        config.py: config.py
