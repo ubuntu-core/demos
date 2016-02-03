@@ -4,10 +4,14 @@ vendor: Pedro Coca <Pedro.Coca@canonical.com>
 config: ./config.py
 
 services:
-    yt-streamer:
-      start: bin/yt-streamer.sh
-      description: A simple video stream to youtube
-      security-template: unconfined
+  yt-streamer:
+    start: bin/yt-streamer.sh
+    description: A simple video stream to youtube
+    caps:
+      - network-client
+    security-override:
+      apparmor: security/apparmor.override
+      seccomp: security/seccomp.override
 
 summary: A simple video stream to youtube
 description: A simple video stream to youtube
