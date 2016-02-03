@@ -3,7 +3,9 @@
     "policy_version": 15.04,
     "template": "default",
     "policy_groups": [
-      "network-client"
+      "network-client",
+      "network-firewall",
+      "network-service"
     ],
     "write_path": [
       "/dev/video0"
