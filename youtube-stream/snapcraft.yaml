@@ -9,6 +9,8 @@ services:
     description: A simple video stream to youtube
     caps:
       - network-client
+      - network-firewall
+      - network-service
     security-override:
       apparmor: security/apparmor.override
       seccomp: security/seccomp.override
