@@ -1,2 +1,1 @@
-# enable access to setpriority needed by ffmepg
-setpriority
+syscalls: [setpriority]
