@@ -1,5 +1,6 @@
 #!/bin/bash
 export PATH=$SNAP_APP_PATH:$SNAP_APP_PATH/usr/bin:$PATH
+export LD_LIBRARY_PATH=$SNAPP_APP_PATH/usr/lib/x86_64-linux-gnu/pulseaudio/:$LD_LIBRARY_PATH
 
 cred_path=$SNAP_APP_DATA_PATH/credentials
 [ ! -f $cred_path ] && exit 0
