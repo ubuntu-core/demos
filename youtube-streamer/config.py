@@ -2,6 +2,7 @@
 
 import os
 import os.path
+import subprocess
 import sys
 import yaml
 
@@ -36,4 +37,6 @@ if __name__ == '__main__':
     if config_yaml:
         set_config(config_file, config_yaml)
 
+    # try restarting the service
+    subprocess.call(["snappy", "service", "restart", os.environ['SNAP_NAME'])
 
