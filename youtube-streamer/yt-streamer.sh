@@ -1,5 +1,5 @@
 #!/bin/bash
-export PATH=$SNAP_APP_PATH:$SNAP_APP_PATH/bin:$PATH
+export PATH=$SNAP_APP_PATH:$SNAP_APP_PATH/usr/bin:$PATH
 
 cred_path=$SNAP_APP_DATA_PATH/credentials
 [ -f $cred_path ] && . $cred_path

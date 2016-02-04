@@ -17,9 +17,17 @@ icon: yt-streamer_icon.png
 
 
 parts:
+  ffmpeg:
+    plugin: copy
+    stage-packages:
+      - ffmpeg
+    snap:
+      - usr/bin/ffmpeg
+      - usr/lib
+    files:
+        ffmpeg: usr/bin/ffmpeg
   yt-streamer:
     plugin: copy
     files:
         yt-streamer.sh: bin/yt-streamer.sh
-        ffmpeg: bin/ffmpeg
         config.py: config.py
