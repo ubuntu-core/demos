@@ -21,6 +21,7 @@ parts:
     plugin: nil
     stage-packages:
       - ffmpeg
+      - libstdc++6
     snap:
       - lib
       - usr/bin/ffmpeg
