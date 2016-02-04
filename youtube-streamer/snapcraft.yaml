@@ -18,14 +18,13 @@ icon: yt-streamer_icon.png
 
 parts:
   ffmpeg:
-    plugin: copy
+    plugin: nil
     stage-packages:
       - ffmpeg
     snap:
+      - lib
       - usr/bin/ffmpeg
       - usr/lib
-    files:
-        ffmpeg: usr/bin/ffmpeg
   yt-streamer:
     plugin: copy
     files:
