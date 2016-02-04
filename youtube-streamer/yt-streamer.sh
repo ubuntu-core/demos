@@ -1,6 +1,10 @@
 #!/bin/bash
 export PATH=$SNAP_APP_PATH:$SNAP_APP_PATH/usr/bin:$PATH
-export LD_LIBRARY_PATH=$SNAPP_APP_PATH/usr/lib/x86_64-linux-gnu/pulseaudio/:$LD_LIBRARY_PATH
+
+ARCH_TRIPLET=x86_64-linux-gnu
+[ "$SNAP_ARCH" = "armhf" ] && ARCH_TRIPLET=arm-linux-gnueabihf
+[ "$SNAP_ARCH" = "arm64" ] && ARCH_TRIPLET=aarch64-linux-gnu
+export LD_LIBRARY_PATH=$SNAPP_APP_PATH/usr/lib/$ARCH_TRIPLET/pulseaudio/:$LD_LIBRARY_PATH
 
 cred_path=$SNAP_APP_DATA_PATH/credentials
 while [ ! -f $cred_path ]; do
