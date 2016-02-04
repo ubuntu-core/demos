@@ -1,6 +1,6 @@
 name: yt-streamer
-version: 0.3
-vendor: Pedro Coca <Pedro.Coca@canonical.com>
+version: 0.1
+vendor: Didier Roche <didrocks@ubuntu.com>, Pedro Coca <Pedro.Coca@canonical.com>
 config: ./config.py
 
 services:
