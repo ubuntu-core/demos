@@ -12,6 +12,7 @@ config:
   yt-streamer:
     YOUTUBE_URL: "rtmp://a.rtmp.youtube.com/live2/"
     YOUTUBE_KEY: "yourcreds"
+-------------------------------------------------------------------------
 """
     sleep 5
 done
