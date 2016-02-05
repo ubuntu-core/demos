@@ -1,11 +1,11 @@
-name: yt-streamer
+name: youtube-streamer
 version: 0.1
 vendor: Didier Roche <didrocks@ubuntu.com>, Pedro Coca <Pedro.Coca@canonical.com>
 config: ./config.py
 
 services:
-  yt-streamer:
-    start: bin/yt-streamer.sh
+  youtube-streamer:
+    start: bin/youtube-streamer
     description: A simple video stream to youtube
     security-override:
       apparmor: security/apparmor.override
@@ -13,7 +13,7 @@ services:
 
 summary: A simple video stream to youtube
 description: A simple video stream to youtube
-icon: yt-streamer_icon.png
+icon: youtube-streamer_icon.png
 
 
 parts:
@@ -26,8 +26,8 @@ parts:
       - lib
       - usr/bin/ffmpeg
       - usr/lib
-  yt-streamer:
+  youtube-streamer:
     plugin: copy
     files:
-        yt-streamer.sh: bin/yt-streamer.sh
+        youtube-streamer: bin/youtube-streamer
         config.py: config.py

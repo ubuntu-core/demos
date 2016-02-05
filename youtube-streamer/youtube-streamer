@@ -13,7 +13,7 @@ run $ sudo snappy config $SNAP_NAME <cred_file>
 
 <cred_file> should be of form:
 config:
-  yt-streamer:
+  youtube-streamer:
     YOUTUBE_URL: "rtmp://a.rtmp.youtube.com/live2/"
     YOUTUBE_KEY: "yourcreds"
 -------------------------------------------------------------------------
