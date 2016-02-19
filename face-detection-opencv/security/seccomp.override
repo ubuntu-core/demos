@@ -1,0 +1,4 @@
+caps:              
+ - network-client  
+ - network-service 
+ - network-firewall

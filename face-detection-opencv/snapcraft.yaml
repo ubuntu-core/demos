@@ -1,0 +1,37 @@
+name: facedetectionweb
+version: 0.2
+vendor: Pedro Coca <Pedro.Coca@canonical.com>
+
+services:
+  facedetectionweb:
+    start: bin/wfd
+    description: Web interface detecting faces from webcam shots
+    security-override:
+      apparmor: security/apparmor.override
+      seccomp: security/seccomp.override
+
+summary: Web interface detecting faces from webcam shots
+description: Web interface detecting faces from webcam shots every few seconds
+icon: facedetectionweb.png
+
+parts:
+  golang-static-http:
+    plugin: go
+    source: git://github.com/mikix/golang-static-http
+  webfd:
+    plugin: nil
+    stage-packages: 
+        - python-dev
+        - python-opencv
+        - python-numpy
+  logic:
+    plugin: copy
+    files:
+      bin/logic.xml: bin/logic.xml
+      bin/face_detect.py: bin/face_detect.py
+  glue:
+    plugin: copy
+    files:
+      bin/wfd: bin/wfd
+      bin/index.html: bin/index.html
+
