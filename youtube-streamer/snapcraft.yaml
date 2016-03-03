@@ -1,5 +1,5 @@
 name: youtube-streamer
-version: 0.1
+version: 0.2
 vendor: Didier Roche <didrocks@ubuntu.com>, Pedro Coca <Pedro.Coca@canonical.com>
 config: ./config.py
 
