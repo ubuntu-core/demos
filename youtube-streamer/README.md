@@ -22,9 +22,9 @@ config:
 EOF
 ```
 
-And press Control+D to save the file. Then, load the config:
+Then, load this new config and remove the temporary file:
 ```sh
-snappy config youtube-streamer /tmp/creds
+sudo snappy config youtube-streamer /tmp/creds
 rm /tmp/creds
 ```
 
