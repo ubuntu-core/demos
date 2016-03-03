@@ -1,16 +1,12 @@
 name: youtube-streamer
-version: 0.2
+version: 0.1
+vendor: Didier Roche <didrocks@ubuntu.com>, Pedro Coca <Pedro.Coca@canonical.com>
 config: ./config.py
 
-apps:
+services:
   youtube-streamer:
-    command: bin/youtube-streamer
-    daemon: simple
-    uses: [cam-transcode]
-
-uses:
-  cam-transcode:
-    type: migration-skill
+    start: bin/youtube-streamer
+    description: A simple video stream to youtube
     security-override:
       apparmor: security/apparmor.override
       seccomp: security/seccomp.override
@@ -18,6 +14,7 @@ uses:
 summary: A simple video stream to youtube
 description: A simple video stream to youtube
 icon: youtube-streamer_icon.png
+
 
 parts:
   ffmpeg:
