@@ -4,7 +4,7 @@ from setuptools import setup
 
 setup(
     name='config',
-    description='config for youtube-streamer',
+    description='config for youtube-streamer-demo',
     author='Didier Roche <didier.roche@canonical.com>',
     license='GPLv3',
     install_requires=[

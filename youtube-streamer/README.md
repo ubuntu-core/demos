@@ -6,7 +6,7 @@ This demo illustrates how to reuse simple pieces from the Ubuntu distribution to
 
 ### Install from the store:
 ```sh
-sudo snappy install youtube-streamer
+sudo snappy install youtube-streamer-demo
 ```
 
 ### Using it:
@@ -24,7 +24,7 @@ EOF
 
 Then, load this new config and remove the temporary file:
 ```sh
-sudo snappy config youtube-streamer /tmp/creds
+sudo snappy config youtube-streamer-demo /tmp/creds
 rm /tmp/creds
 ```
 
