@@ -1,5 +1,3 @@
 syscalls: [setpriority]
 caps:              
  - network-client  
- - network-service 
- - network-firewall
