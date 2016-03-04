@@ -2,6 +2,10 @@
 
 This demo illustrates how to reuse simple pieces from the Ubuntu distribution to build with minimal glue an Youtube live stream publishing.
 
+## Hardware requirement:
+
+You need a webcam attached to your snappy device to try this demo out.
+
 ## Install and use it:
 
 ### Install from the store:
@@ -16,7 +20,7 @@ The service will only starts once some youtube account will be configure. To do 
 ```sh
 cat > /tmp/creds << EOF
 config:
-  youtube-streamer:
+  youtube-streamer-demo:
     YOUTUBE_URL: "<rtmp://YOUTUBE_SERVER_URL>"
     YOUTUBE_KEY: "<YOUR_YOUTUBE_STREAM_KEY>"
 EOF
