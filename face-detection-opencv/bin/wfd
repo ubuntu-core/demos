@@ -8,8 +8,8 @@ if [ ! -f $SNAP_APP_DATA_PATH/index.html ]; then
   cp $SNAP_APP_PATH/bin/index.html "$SNAP_APP_DATA_PATH"
 fi
 
-if [ ! -f $SNAP_APP_DATA_PATH/banner.png]; then
-  cp $SNAP_APP_PATH/bin/banner.png "$SNAP_APP_DATA_PATH"
+if [ ! -f $SNAP_APP_DATA_PATH/banner.png ]; then
+  cp $SNAP_APP_PATH/meta/facedetectionweb.png "$SNAP_APP_DATA_PATH"/banner.png
 fi
 
 # Get into the Application Data folder and start the web server
