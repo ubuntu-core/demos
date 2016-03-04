@@ -17,7 +17,7 @@ icon: facedetectionweb.png
 parts:
   golang-static-http:
     plugin: go
-    source: git://github.com/mikix/golang-static-http
+    source: golang-static-http/
   webfd:
     plugin: nil
     stage-packages: 
