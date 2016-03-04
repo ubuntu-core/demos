@@ -1,6 +1,9 @@
-name: facedetectionweb
-version: 0.2
+name: face-detection-demo
+version: 0.1
 vendor: Pedro Coca <Pedro.Coca@canonical.com>
+summary: Web interface detecting faces from webcam shots
+description: Web interface detecting faces from webcam shots every few seconds
+icon: facedetectionweb.png
 
 services:
   facedetectionweb:
@@ -9,10 +12,6 @@ services:
     security-override:
       apparmor: security/apparmor.override
       seccomp: security/seccomp.override
-
-summary: Web interface detecting faces from webcam shots
-description: Web interface detecting faces from webcam shots every few seconds
-icon: facedetectionweb.png
 
 parts:
   golang-static-http:
