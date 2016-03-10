@@ -1,5 +1,5 @@
 name: face-detection-demo
-version: 0.1
+version: 0.1.1
 vendor: Pedro Coca <Pedro.Coca@canonical.com>
 summary: Web interface detecting faces from webcam shots
 description: Web interface detecting faces from webcam shots every few seconds
