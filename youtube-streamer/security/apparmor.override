@@ -4,8 +4,5 @@
     "template": "default",
     "policy_groups": [
       "network-client"
-    ],
-    "write_path": [
-      "/dev/video0"
     ]
 }

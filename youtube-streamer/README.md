@@ -13,6 +13,11 @@ You need a webcam attached to your snappy device to try this demo out.
 sudo snappy install youtube-streamer-demo
 ```
 
+You need to give the webcam access to your application. For this, run:
+```sh
+sudo snappy hw-assign youtube-streamer-demo.didrocks /dev/video0
+```
+
 ### Using it:
 
 The service will only starts once some youtube account will be configure. To do so, add something similar to this:
