@@ -9,9 +9,7 @@ services:
   facedetectionweb:
     start: bin/wfd
     description: Web interface detecting faces from webcam shots
-    security-override:
-      apparmor: security/apparmor.override
-      seccomp: security/seccomp.override
+    caps: [network-service]
 
 parts:
   golang-static-http:
