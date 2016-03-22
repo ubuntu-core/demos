@@ -6,11 +6,11 @@ apps:
   youtube-streamer:
     command: bin/youtube-streamer
     daemon: simple
-    uses: [cam-transcode]
+    plugs: [cam-transcode]
 
-uses:
+plugs:
   cam-transcode:
-    type: migration-skill
+    interface: old-security
     security-override:
       apparmor: security/apparmor.override
       seccomp: security/seccomp.override
