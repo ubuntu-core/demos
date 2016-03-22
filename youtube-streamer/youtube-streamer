@@ -1,12 +1,12 @@
 #!/bin/bash
-export PATH=$SNAP_APP_PATH:$SNAP_APP_PATH/usr/bin:$PATH
 
+# Add pulseaudio subdirectory for ffmepg access
 ARCH_TRIPLET=x86_64-linux-gnu
 [ "$SNAP_ARCH" = "armhf" ] && ARCH_TRIPLET=arm-linux-gnueabihf
 [ "$SNAP_ARCH" = "arm64" ] && ARCH_TRIPLET=aarch64-linux-gnu
-export LD_LIBRARY_PATH=$SNAPP_APP_PATH/usr/lib/$ARCH_TRIPLET/pulseaudio/:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$SNAP/usr/lib/$ARCH_TRIPLET/pulseaudio/:$LD_LIBRARY_PATH
 
-cred_path=$SNAP_APP_DATA_PATH/credentials
+cred_path=$SNAP_DATA/credentials
 while [ ! -f $cred_path ]; do
     echo """You need to configure this snap with your youtube credentials
 run $ sudo snappy config $SNAP_NAME <cred_file>
