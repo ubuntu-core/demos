@@ -1,5 +1,8 @@
 name: youtube-streamer
 version: 0.2
+summary: A simple video stream to youtube
+description: A simple video stream to youtube
+icon: youtube-streamer_icon.png
 config: ./config.py
 
 apps:
@@ -14,10 +17,6 @@ plugs:
     security-override:
       apparmor: security/apparmor.override
       seccomp: security/seccomp.override
-
-summary: A simple video stream to youtube
-description: A simple video stream to youtube
-icon: youtube-streamer_icon.png
 
 parts:
   ffmpeg:
