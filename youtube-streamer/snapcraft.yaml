@@ -14,9 +14,10 @@ apps:
 plugs:
   cam-transcode:
     interface: old-security
-    security-override:
-      apparmor: security/apparmor.override
-      seccomp: security/seccomp.override
+    security-template: unconfined
+    #security-override:
+    #  apparmor: security/apparmor.override
+    #  seccomp: security/seccomp.override
 
 parts:
   ffmpeg:
