@@ -6,9 +6,12 @@ ARCH_TRIPLET=x86_64-linux-gnu
 [ "$SNAP_ARCH" = "arm64" ] && ARCH_TRIPLET=aarch64-linux-gnu
 export LD_LIBRARY_PATH=$SNAP/usr/lib/$ARCH_TRIPLET/pulseaudio/:$LD_LIBRARY_PATH
 
+CONFIG_DISPLAYED=false
+
 cred_path=$SNAP_DATA/credentials
 while [ ! -f $cred_path ]; do
-    echo """You need to configure this snap with your youtube credentials
+    if [ "$CONFIG_DISPLAYED" = "false" ]; then
+        echo """You need to configure this snap with your youtube credentials
 run $ sudo snappy config $SNAP_NAME <cred_file>
 
 <cred_file> should be of form:
@@ -18,6 +21,8 @@ config:
     YOUTUBE_KEY: "yourcreds"
 -------------------------------------------------------------------------
 """
+        CONFIG_DISPLAYED=true
+    fi
     sleep 5
 done
 
