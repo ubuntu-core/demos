@@ -22,6 +22,7 @@ import logging
 import os
 import sqlite3
 
+from servers import WebClientsCommands
 from tools import Singleton, get_data_path, suppress
 
 logger = logging.getLogger(__name__)
@@ -40,6 +41,7 @@ class DataHandler(object):
         c.execute("SELECT * FROM FacesDetect ORDER BY Timestamp")
         self.face_detect_data = c.fetchall()
         logger.debug("Found {}".format(self.face_detect_data))
+        WebClientsCommands().sendFacesDetectAll(self.face_detect_data)
 
     def add_one_facedetect_entry(self, timestamp, count):
         """Add one face detect datapoint at timestamp"""

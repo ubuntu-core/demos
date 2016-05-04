@@ -40,6 +40,7 @@ class WebClientsCommands(WebSocket):
 
     clients = []
     server = None
+    faces_detect_data_list = []
 
     def handleMessage(self):
         """Message received from a client"""
@@ -55,7 +56,7 @@ class WebClientsCommands(WebSocket):
         """New client connected"""
         logger.info("New client: {}".format(self.address[0]))
         WebClientsCommands.clients.append(self)
-        self._sendPopularity()
+        self._sendFacesDetect()
 
     def handleClose(self):
         """Client disconnected"""
@@ -63,15 +64,15 @@ class WebClientsCommands(WebSocket):
         WebClientsCommands.clients.remove(self)
 
     @staticmethod
-    def sendPopularityAll():
-        """Send room list to all clients"""
+    def sendFacesDetectAll(new_face_detect_data_list):
+        """Send face detect list to all clients"""
+        WebClientsCommands.faces_detect_data_list = new_faces_detect_data_list
         for client in WebClientsCommands.clients:
-            client._sendRoomList()
+            client._sendFacesDetect()
 
-    def _sendPopularity(self):
-        """Send popularity face detection data points"""
-        msg = {}
-        self.__sendMessage("popularity", rooms)
+    def _sendFacesDetect(self):
+        """Send face detection list points"""
+        self.__sendMessage("facesdetectlist", self.faces_detect_data_list)
 
     def __sendMessage(self, topic, content):
         """Wrap object and message in a json payload"""
