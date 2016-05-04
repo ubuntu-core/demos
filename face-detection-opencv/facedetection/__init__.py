@@ -24,6 +24,7 @@ import sys
 import traceback
 from time import sleep
 
+from datahandler import DataHandler
 from facedetection import FaceDetection
 from servers import StaticServer, CommandSocketServer
 import settings
@@ -82,6 +83,9 @@ def main():
     # start servers
     StaticServer(settings.WEBSERVER_PORT).start()
     CommandSocketServer(settings.SOCKET_PORT).start()
+
+    # instantiate data handler from db
+    DataHandler()
 
     # instantiate face detection helper
     f = FaceDetection()
