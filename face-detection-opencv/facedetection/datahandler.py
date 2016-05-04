@@ -41,7 +41,7 @@ class DataHandler(object):
         c.execute("SELECT * FROM FacesDetect ORDER BY Timestamp")
         self.face_detect_data = c.fetchall()
         logger.debug("Found {}".format(self.face_detect_data))
-        WebClientsCommands().sendFacesDetectAll(self.face_detect_data)
+        WebClientsCommands.sendFacesDetectAll(self.face_detect_data)
 
     def add_one_facedetect_entry(self, timestamp, count):
         """Add one face detect datapoint at timestamp"""
@@ -52,4 +52,4 @@ class DataHandler(object):
         self._conn.commit()
         new_data = (timestamp, count)
         self.face_detect_data.append(new_data)
-        WebClientsCommands().sendNewFacesEntryAll(self.face_detect_data, new_data)
+        WebClientsCommands.sendNewFacesEntryAll(self.face_detect_data, new_data)

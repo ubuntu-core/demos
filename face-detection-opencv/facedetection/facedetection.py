@@ -61,8 +61,8 @@ class FaceDetection(object):
             for (x, y, w, h) in faces:
                 cv2.rectangle(image, (x, y), (x + w, y + h), (255, 36, 36), 5)
 
-            temp_file = "{}.new".format(LAST_SCREENSHOT)
+            temp_file = "{}.new.png".format(LAST_SCREENSHOT)
             cv2.imwrite(temp_file, image)
             os.rename(temp_file, LAST_SCREENSHOT)
             timestamp = time()
-            DataHandler().add_one_facedetect_entry(int(time(), num_faces))
+            DataHandler().add_one_facedetect_entry(int(time()), num_faces)

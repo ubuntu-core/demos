@@ -64,7 +64,7 @@ class WebClientsCommands(WebSocket):
         WebClientsCommands.clients.remove(self)
 
     @staticmethod
-    def sendFacesDetectAll(new_face_detect_data_list):
+    def sendFacesDetectAll(new_faces_detect_data_list):
         """Send face detect list to all clients"""
         WebClientsCommands.faces_detect_data_list = new_faces_detect_data_list
         for client in WebClientsCommands.clients:
@@ -96,7 +96,8 @@ class WebClientsCommands(WebSocket):
 class CommandSocketServer(threading.Thread):
     """Threaded Command websocket"""
 
-    def __init__(self, port):
+    def __init__(self, port, *args, **kwargs):
+        super(CommandSocketServer, self).__init__(*args, **kwargs)
         self.port = port
 
     def run(self):
@@ -150,7 +151,8 @@ class SocketCommands(object):
 class StaticServer(threading.Thread):
     """Threaded Static http server"""
 
-    def __init__(self, port):
+    def __init__(self, port, *args, **kwargs):
+        super(StaticServer, self).__init__(*args, **kwargs)
         self.port = port
 
     def run(self):
