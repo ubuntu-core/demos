@@ -26,8 +26,8 @@ The service will only starts once some youtube account will be configure. To do 
 cat > /tmp/creds << EOF
 config:
   youtube-streamer-demo:
-    YOUTUBE_URL: "<rtmp://YOUTUBE_SERVER_URL>"
-    YOUTUBE_KEY: "<YOUR_YOUTUBE_STREAM_KEY>"
+    YOUTUBE_URL: rtmp://YOUTUBE_SERVER_URL
+    YOUTUBE_KEY: YOUR_YOUTUBE_STREAM_KEY
 EOF
 ```
 
