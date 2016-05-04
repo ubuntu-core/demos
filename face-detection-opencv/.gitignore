@@ -6,3 +6,5 @@ stage/
 *.pyc
 .bzr
 bower_components/
+
+*.sqlite
