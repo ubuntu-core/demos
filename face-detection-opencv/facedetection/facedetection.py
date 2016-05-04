@@ -21,8 +21,9 @@ import logging
 import os
 import cv2
 import numpy
+from time import time
 
-from servers import WebClientsCommands
+from datahandler import DataHandler
 from settings import LAST_SCREENSHOT
 from tools import Singleton
 
@@ -53,8 +54,9 @@ class FaceDetection(object):
         )
 
         # Draw a rectangle around the faces
-        if len(faces) > 0:
-            logger.debug("{} faces detected".format(len(faces)))
+        num_faces = len(faces)
+        if num_faces > 0:
+            logger.debug("{} faces detected".format(num_faces))
             # Draw a rectangle around the faces
             for (x, y, w, h) in faces:
                 cv2.rectangle(image, (x, y), (x + w, y + h), (255, 36, 36), 5)
@@ -62,3 +64,5 @@ class FaceDetection(object):
             temp_file = "{}.new".format(LAST_SCREENSHOT)
             cv2.imwrite(temp_file, image)
             os.rename(temp_file, LAST_SCREENSHOT)
+            timestamp = time()
+            DataHandler().add_one_facedetect_entry(int(time(), num_faces)
