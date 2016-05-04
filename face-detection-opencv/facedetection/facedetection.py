@@ -56,6 +56,6 @@ class FaceDetection(object):
             logger.debug("{} faces detected".format(len(faces)))
             # Draw a rectangle around the faces
             for (x, y, w, h) in faces:
-                cv2.rectangle(image, (x, y), (x+w, y+h), (255, 36, 36), 5)
+                cv2.rectangle(image, (x, y), (x + w, y + h), (255, 36, 36), 5)
 
             cv2.imwrite("processed_shot.png", image)

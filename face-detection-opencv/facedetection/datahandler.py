@@ -43,7 +43,8 @@ class DataHandler(object):
 
     def add_one_facedetect_entry(self, timestamp, count):
         """Add one face detect datapoint at timestamp"""
-        logger.info("Add new data point: {} at {}".format(count, datetime.datetime.utcfromtimestamp(timestamp).isoformat()))
+        logger.info("Add new data point: {} at {}".format(count,
+                                                          datetime.datetime.utcfromtimestamp(timestamp).isoformat()))
         c = self._conn.cursor()
         c.execute("INSERT INTO FacesDetect VALUES({}, {})".format(timestamp, count))
         self._conn.commit()

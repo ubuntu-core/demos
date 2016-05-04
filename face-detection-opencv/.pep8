@@ -1,0 +1,7 @@
+[pep8]
+exclude = env/,*.xml,*kulka/,*SimpleWebSocketServer/,*snap*,stage/,home.map,sphero.hw
+max-line-length = 120
+# ignore "Identation is not multiple of 4" for continuation line
+# ignore as well lambda assignement expression (we are doing one for nil effect)
+# ignore import not on top of file due to kulka (after sys.path.insert)
+ignore = E111,E731,E402
