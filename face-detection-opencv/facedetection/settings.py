@@ -17,14 +17,19 @@
 # this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-import logger
+import os
 import yaml
+
+import logging
 logger = logging.getLogger(__name__)
+
+from tools import get_data_path, suppress
 
 logger.debug("Opening settings file")
 settings = {}
-with open(os.path.join(get_data_path(), "settings"), 'r') as f:
-    settings = yaml.load(f)["facedetection"]
+with suppress(IOError):
+    with open(os.path.join(get_data_path(), "settings"), 'r') as f:
+        settings = yaml.load(f)["facedetection"]
 
 WEBSERVER_PORT = int(settings.get("webserver-port", 8042))
 SOCKET_PORT = WEBSERVER_PORT + 1
