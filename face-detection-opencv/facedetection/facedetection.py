@@ -65,4 +65,4 @@ class FaceDetection(object):
             cv2.imwrite(temp_file, image)
             os.rename(temp_file, LAST_SCREENSHOT)
             timestamp = time()
-            DataHandler().add_one_facedetect_entry(int(time(), num_faces)
+            DataHandler().add_one_facedetect_entry(int(time(), num_faces))
