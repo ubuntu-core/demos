@@ -23,6 +23,7 @@ import cv2
 import numpy
 
 from servers import WebClientsCommands
+from settings import LAST_SCREENSHOT
 from tools import Singleton
 
 logger = logging.getLogger(__name__)
@@ -58,4 +59,6 @@ class FaceDetection(object):
             for (x, y, w, h) in faces:
                 cv2.rectangle(image, (x, y), (x + w, y + h), (255, 36, 36), 5)
 
-            cv2.imwrite("processed_shot.png", image)
+            temp_file = "{}.new".format(LAST_SCREENSHOT)
+            cv2.imwrite(temp_file, image)
+            os.rename(temp_file, LAST_SCREENSHOT)
