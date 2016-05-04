@@ -8,3 +8,4 @@ stage/
 bower_components/
 
 *.sqlite
+*.png

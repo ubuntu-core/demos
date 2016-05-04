@@ -1,5 +1,5 @@
 [pep8]
-exclude = env/,*.xml,*kulka/,*SimpleWebSocketServer/,*snap*,stage/,home.map,sphero.hw
+exclude = env/,*.xml,*kulka/,*SimpleWebSocketServer/,*snap*,stage/,home.map,sphero.hw,*.sqlite,*.png
 max-line-length = 120
 # ignore "Identation is not multiple of 4" for continuation line
 # ignore as well lambda assignement expression (we are doing one for nil effect)
