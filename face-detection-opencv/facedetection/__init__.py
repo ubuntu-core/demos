@@ -21,6 +21,8 @@ import argparse
 import logging
 import os
 import sys
+import traceback
+from time import sleep
 
 from facedetection import FaceDetection
 from servers import StaticServer, CommandSocketServer
@@ -84,6 +86,11 @@ def main():
     # instantiate face detection helper
     f = FaceDetection()
 
-    while(True):
-        sleep(settings.TIME_BETWEEN_SHOTS)
-        f.detect_faces()
+    try:
+        while(True):
+            sleep(settings.TIME_BETWEEN_SHOTS)
+            f.detect_faces()
+    except:
+        traceback.print_exc()
+        # close all threads
+        os._exit(1)
