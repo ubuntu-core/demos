@@ -74,6 +74,17 @@ class WebClientsCommands(WebSocket):
         """Send face detection list points"""
         self.__sendMessage("facesdetectlist", self.faces_detect_data_list)
 
+    @staticmethod
+    def sendNewFacesEntryAll(new_faces_detect_data_list, new_entry):
+        """Send new face detection entry to all clients"""
+        WebClientsCommands.faces_detect_data_list = new_faces_detect_data_list
+        for client in WebClientsCommands.clients:
+            client._sendNewFacesEntry(new_entry)
+
+    def __sendNewFacesEntry(self, new_entry):
+        """Send new face detection entry"""
+        self.__sendMessage("newentry", new_entry)
+
     def __sendMessage(self, topic, content):
         """Wrap object and message in a json payload"""
         message_obj = {'topic': topic, 'content': content}

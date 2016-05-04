@@ -50,4 +50,6 @@ class DataHandler(object):
         c = self._conn.cursor()
         c.execute("INSERT INTO FacesDetect VALUES({}, {})".format(timestamp, count))
         self._conn.commit()
-        self.face_detect_data.append((timestamp, count))
+        new_data = (timestamp, count)
+        self.face_detect_data.append(new_data)
+        WebClientsCommands().sendNewFacesEntryAll(self.face_detect_data, new_data)
