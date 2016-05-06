@@ -94,6 +94,8 @@ def main():
         while(True):
             sleep(settings.TIME_BETWEEN_SHOTS)
             f.detect_faces()
+    except KeyboardInterrupt:
+        os._exit(0)
     except:
         traceback.print_exc()
         # close all threads
