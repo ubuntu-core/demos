@@ -14,6 +14,8 @@
        websocket.send(JSON.stringify(msg));
      });*/
 
+    var mainchart = document.getElementById('mainchart');
+
     // only here get the websocket status back and toggle values if needed
     var websocket = new ReconnectingWebSocket('ws://' + window.location.hostname + ':8043/');
     websocket.onopen = function () {
@@ -47,7 +49,7 @@
       }
 
       // we need to make an array copy because it won't redraw with the same reference, even after a manual redraw call
-      document.getElementById('mainchart').rows = app.data.slice();
+      mainchart.rows = app.data.slice();
     };
 
   });
