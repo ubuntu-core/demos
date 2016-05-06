@@ -15,6 +15,7 @@
      });
 
     var mainchart = document.getElementById('mainchart');
+    var screenimg = document.getElementById('screenimg');
 
     // only here get the websocket status back and toggle values if needed
     var websocket = new ReconnectingWebSocket('ws://' + window.location.hostname + ':8043/');
@@ -50,6 +51,7 @@
 
       // we need to make an array copy because it won't redraw with the same reference, even after a manual redraw call
       mainchart.rows = app.data.slice();
+      screenimg.src = "dynamics/last_screen.png?" + new Date().getTime();
     };
 
   });

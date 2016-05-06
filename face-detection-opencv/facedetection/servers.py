@@ -31,7 +31,7 @@ import threading
 sys.path.insert(0, os.path.dirname(__file__))
 from SimpleWebSocketServer import SimpleWebSocketServer, WebSocket
 
-from tools import Singleton
+from tools import Singleton, get_data_path
 
 logger = logging.getLogger(__name__)
 
@@ -128,7 +128,11 @@ class OurHttpRequestHandler(SimpleHTTPRequestHandler):
         path = posixpath.normpath(urllib.unquote(path))
         words = path.split('/')
         words = filter(None, words)
-        path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'www')
+        if path.startswith('/dynamics'):
+            path = os.path.join(get_data_path())
+            words = words[1:]
+        else:
+            path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'www')
         for word in words:
             drive, word = os.path.splitdrive(word)
             head, word = os.path.split(word)
