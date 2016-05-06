@@ -82,7 +82,7 @@
       </div>
       <div class="row">
         <div class="horizontal layout center-justified">
-          <paper-button id="restartButton" raised>Shut down and restart</paper-button>
+          <paper-button id="restartButton" raised disabled$="{{!connected}}">Shut down and restart</paper-button>
         </div>
       </div>
       <paper-toast text="Not connected to server" class="fit-bottom" opened$="{{!connected}}" duration="0"></paper-toast>
