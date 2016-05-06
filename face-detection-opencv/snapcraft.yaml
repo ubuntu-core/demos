@@ -1,37 +1,26 @@
-name: facedetectionweb
+name: face-detection-demo
 version: 0.2
-vendor: Pedro Coca <Pedro.Coca@canonical.com>
+summary: Demo for Face Detection statistics
+description: |
+  This demo shows face detection statics parameterized to take a picture through a webcam X seconds
+  (timing between pictures can be defined in $SNAP_DATA/settings). Report results through a web interface
+  on 8042 port (configurable as well).
 
-services:
+apps:
   facedetectionweb:
-    start: bin/wfd
-    description: Web interface detecting faces from webcam shots
-    security-override:
-      apparmor: security/apparmor.override
-      seccomp: security/seccomp.override
-
-summary: Web interface detecting faces from webcam shots
-description: Web interface detecting faces from webcam shots every few seconds
-icon: facedetectionweb.png
+    command: bin/facedetection.exports
+    plugs: [network-bind]
+    daemon: simple
 
 parts:
-  golang-static-http:
-    plugin: go
-    source: git://github.com/mikix/golang-static-http
-  webfd:
-    plugin: nil
-    stage-packages: 
-        - python-dev
-        - python-opencv
-        - python-numpy
-  logic:
+  demo:
     plugin: copy
     files:
-      bin/logic.xml: bin/logic.xml
-      bin/face_detect.py: bin/face_detect.py
-  glue:
-    plugin: copy
-    files:
-      bin/wfd: bin/wfd
-      bin/index.html: bin/index.html
-
+      'bin/*': 'bin/'
+      'logic.xml': 'logic.xml'
+      'facedetection': 'facedetection'
+    stage-packages:
+     - python-dev
+     - python-opencv
+     - python-numpy
+     - python-yaml
