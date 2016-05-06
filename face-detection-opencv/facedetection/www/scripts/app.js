@@ -5,46 +5,51 @@
   app.data = [];
   app.connected = false;
 
-  /* quit server */
-  /*document.querySelector('#restartButton').addEventListener('click', function () {
-     var msg = { topic: 'quit', content: '' };
-     websocket.send(JSON.stringify(msg));
-   });*/
+  // imports are loaded and elements have been registered
+  window.addEventListener('WebComponentsReady', function () {
 
-  // only here get the websocket status back and toggle values if needed
-  var websocket = new ReconnectingWebSocket('ws://' + window.location.hostname + ':8043/');
-  websocket.onopen = function () {
-    console.log('websocket connected');
-    app.connected = true;
-  };
+    /* quit server */
+    /*document.querySelector('#restartButton').addEventListener('click', function () {
+       var msg = { topic: 'quit', content: '' };
+       websocket.send(JSON.stringify(msg));
+     });*/
 
-  websocket.onclose = function () {
-    console.log('websocket disconnected');
-    app.connected = false;
-  };
+    // only here get the websocket status back and toggle values if needed
+    var websocket = new ReconnectingWebSocket('ws://' + window.location.hostname + ':8043/');
+    websocket.onopen = function () {
+      console.log('websocket connected');
+      app.connected = true;
+    };
 
-  websocket.onerror = function (e) {
-    console.log('Error in websocket: ' + e.data);
-  };
+    websocket.onclose = function () {
+      console.log('websocket disconnected');
+      app.connected = false;
+    };
 
-  websocket.onmessage = function (e) {
-    console.log('Message received: ' + e.data);
-    var message = JSON.parse(e.data);
-    switch (message.topic) {
-      case 'newentry':
+    websocket.onerror = function (e) {
+      console.log('Error in websocket: ' + e.data);
+    };
 
-        // we would use this.push in a Polymer() element to keep the databinding working
-        app.data.push(message.content);
-        break;
-      case 'facesdetectlist':
-        app.data = message.content;
-        break;
-      default:
-        console.log('Unknown message');
-    }
+    websocket.onmessage = function (e) {
+      console.log('Message received: ' + e.data);
+      var message = JSON.parse(e.data);
+      switch (message.topic) {
+        case 'newentry':
 
-    // we need to make an array copy because it won't redraw with the same reference, even after a manual redraw call
-    document.getElementById('mainchart').rows = app.data.slice();
-  };
+          // we would use this.push in a Polymer() element to keep the databinding working
+          app.data.push(message.content);
+          break;
+        case 'facesdetectlist':
+          app.data = message.content;
+          break;
+        default:
+          console.log('Unknown message');
+      }
+
+      // we need to make an array copy because it won't redraw with the same reference, even after a manual redraw call
+      document.getElementById('mainchart').rows = app.data.slice();
+    };
+
+  });
 
 })(document);
