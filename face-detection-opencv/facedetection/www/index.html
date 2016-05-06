@@ -60,7 +60,13 @@
         <google-chart
           id="mainchart"
           type='area'
-          options='{"title": "Number of visitors at booth:", "animation": {"duration": "2000"}}'
+          options='{ "title": "Number of visitors at booth:",
+                     "legend": "none",
+                     "chartArea": {"width": "90%", "height": "80%"},
+                     "animation": {"duration": "2000"},
+                     "vAxis": {"format": "0"},
+                     "hAxis": {"textPosition": "none"}
+                   }'
           cols='[{"label":"Time", "type":"number"}, {"label":"Numbers", "type":"number"}]'
           rows$="{{data}}">
         ></google-chart>
