@@ -9,10 +9,10 @@
   window.addEventListener('WebComponentsReady', function () {
 
     /* quit server */
-    /*document.querySelector('#restartButton').addEventListener('click', function () {
+    document.querySelector('#restartButton').addEventListener('click', function () {
        var msg = { topic: 'quit', content: '' };
        websocket.send(JSON.stringify(msg));
-     });*/
+     });
 
     var mainchart = document.getElementById('mainchart');
 
