@@ -57,8 +57,13 @@
 
     <template is="dom-bind" id="app">
       <div class="row row-enterprise">
-        <div class="eight-col">
-        </div>
+        <google-chart
+          id="mainchart"
+          type='area'
+          options='{"title": "Number of visitors at booth:", "animation": {"duration": "2000"}}'
+          cols='[{"label":"Time", "type":"number"}, {"label":"Numbers", "type":"number"}]'
+          rows$="{{data}}">
+        ></google-chart>
       </div>
       <div class="row">
         <div class="horizontal layout center-justified">
