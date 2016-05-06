@@ -82,7 +82,7 @@ class WebClientsCommands(WebSocket):
         for client in WebClientsCommands.clients:
             client._sendNewFacesEntry(new_entry)
 
-    def __sendNewFacesEntry(self, new_entry):
+    def _sendNewFacesEntry(self, new_entry):
         """Send new face detection entry"""
         self.__sendMessage("newentry", new_entry)
 
