@@ -25,7 +25,7 @@ from time import time
 
 from datahandler import DataHandler
 from settings import LAST_SCREENSHOT
-from tools import Singleton
+from tools import Singleton, get_data_path
 
 logger = logging.getLogger(__name__)
 
@@ -36,6 +36,10 @@ class FaceDetection(object):
 
     # Create the filter cascade
     faceCascade = cv2.CascadeClassifier(os.path.join(os.path.dirname(__file__), '..', 'logic.xml'))
+
+    def __init__(self):
+        """Save last screenshot at """
+        self.screenshot_path = os.path.join(get_data_path(), LAST_SCREENSHOT)
 
     def detect_faces(self):
         logger.debug("Detect faces")
@@ -61,9 +65,9 @@ class FaceDetection(object):
             for (x, y, w, h) in faces:
                 cv2.rectangle(image, (x, y), (x + w, y + h), (255, 36, 36), 5)
 
-            temp_file = "{}.new.png".format(LAST_SCREENSHOT)
+            temp_file = "{}.new.png".format(self.screenshot_path)
             cv2.imwrite(temp_file, image)
-            os.rename(temp_file, LAST_SCREENSHOT)
+            os.rename(temp_file, self.screenshot_path)
             timestamp = time()
 
         DataHandler().add_one_facedetect_entry(int(time()), num_faces)
