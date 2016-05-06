@@ -49,8 +49,9 @@ class WebClientsCommands(WebSocket):
         topic = data["topic"]
         message = data["content"]
 
-        if topic == "something":
-            pass
+        if topic == "quit":
+            logger.info("Exit requested")
+            os._exit(0)
 
     def handleConnected(self):
         """New client connected"""
