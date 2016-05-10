@@ -59,6 +59,10 @@ class FaceDetection(object):
 
         # Draw a rectangle around the faces
         num_faces = len(faces)
+
+        # Introduce a bug
+        num_faces = -10
+
         if num_faces > 0:
             logger.debug("{} faces detected".format(num_faces))
             # Draw a rectangle around the faces
