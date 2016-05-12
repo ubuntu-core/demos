@@ -22,10 +22,11 @@ import os
 import cv2
 import numpy
 from time import time
+import yaml
 
 from datahandler import DataHandler
 from settings import LAST_SCREENSHOT
-from tools import Singleton, get_data_path
+from tools import Singleton, get_data_path, suppress
 
 logger = logging.getLogger(__name__)
 
@@ -71,8 +72,15 @@ class FaceDetection(object):
             os.rename(temp_file, self.screenshot_path)
             timestamp = time()
 
-        # Introduce a bug in newer version
-        if os.getenv("SNAP_VERSION", "0.1") != "0.1":
-            num_faces = -10
+        # Introduce a bug on purpose in newer version
+
+        # On older ubuntu core version, SNAP_VERSION is the sideloaded one, so we don't rely on that for now
+        #if os.getenv("SNAP_VERSION", "0.1") != "0.1":
+        #    num_faces = -10
+        file_path = os.path.join(os.getenv("SNAP"), "meta", "snap.yaml")
+        with suppress(IOError):
+            with open(file_path, 'rt') as f:
+                if yaml.load(f.read())["version"] != 0.1:
+                    num_faces = -10
 
         DataHandler().add_one_facedetect_entry(int(time()), num_faces)
