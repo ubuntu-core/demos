@@ -60,9 +60,6 @@ class FaceDetection(object):
         # Draw a rectangle around the faces
         num_faces = len(faces)
 
-        # Introduce a bug
-        num_faces = -10
-
         if num_faces > 0:
             logger.debug("{} faces detected".format(num_faces))
             # Draw a rectangle around the faces
@@ -73,5 +70,9 @@ class FaceDetection(object):
             cv2.imwrite(temp_file, image)
             os.rename(temp_file, self.screenshot_path)
             timestamp = time()
+
+        # Introduce a bug in newer version
+        if os.getenv("SNAP_VERSION", "0.1") != "0.1":
+            num_faces = -10
 
         DataHandler().add_one_facedetect_entry(int(time()), num_faces)
