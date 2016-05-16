@@ -5,7 +5,7 @@ sudo snappy remove face-detection
 sudo snappy purge face-detection
 
 echo "Reinstalling 0.1 and enable hw"
-sudo snappy install face-detection_0.1_armhf.snap
+sudo snappy install face-detection_0.1_*.snap
 sudo snappy hw-assign face-detection.sideload /dev/video0
 
 if [ -f settings ]; then
