@@ -1,0 +1,17 @@
+#!/bin/sh
+
+echo "Removing face-detection apps and older copies"
+sudo snappy remove face-detection
+sudo snappy purge face-detection
+
+echo "Reinstalling 0.1 and enable hw"
+sudo snappy install face-detection_0.1_armhf.snap
+sudo snappy hw-assign face-detection.sideload /dev/video0
+
+if [ -f settings ]; then
+    cp settings /var/lib/snaps/face-detection.sideload/current/
+fi
+sudo snappy service restart face-detection
+
+# stamp working version number
+echo WORKING_VERSION=`snappy list | grep face-detection | awk -F' ' '{print $3}'` > working_version
