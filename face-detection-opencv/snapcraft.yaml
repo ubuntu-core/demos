@@ -9,8 +9,13 @@ description: |
 apps:
   facedetectionweb:
     command: bin/facedetection.exports
-    plugs: [network-bind]
+    plugs: [unconfined-plug]
     daemon: simple
+
+plugs:
+  unconfined-plug:
+    interface: old-security
+    security-template: unconfined
 
 parts:
   demo:
