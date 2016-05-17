@@ -9,7 +9,7 @@ sudo snappy install face-detection_0.1_*.snap
 sudo snappy hw-assign face-detection.sideload /dev/video0
 
 if [ -f settings ]; then
-    cp settings /var/lib/snaps/face-detection.sideload/current/
+    sudo cp settings /var/lib/snaps/face-detection.sideload/current/
 fi
 sudo snappy service restart face-detection
 
