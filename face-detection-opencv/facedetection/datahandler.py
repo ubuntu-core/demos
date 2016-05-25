@@ -33,7 +33,19 @@ class DataHandler(object):
     __metaclass__ = Singleton
 
     def __init__(self):
-        self._conn = sqlite3.connect(os.path.join(get_data_path(), 'faces_detect.sqlite'))
+
+        db_path = os.path.join(get_data_path(), 'faces_detect.sqlite')
+
+        # Introduce a bug on purpose in newer version, removing the database content
+
+        # On older ubuntu core version, SNAP_VERSION is the sideloaded one, so we don't rely on that for now
+        #if os.getenv("SNAP_VERSION", "0.1") != "0.1":
+        #    num_faces = -10
+        file_path = os.path.join(os.getenv("SNAP"), "meta", "snap.yaml")
+        with suppress(FileNotFoundError):
+            os.remove(db_path)
+
+        self._conn = sqlite3.connect(db_path)
         c = self._conn.cursor()
         with suppress(sqlite3.OperationalError):
             c.execute("CREATE TABLE FacesDetect(Timestamp DATETIME, Number INTEGER);")
