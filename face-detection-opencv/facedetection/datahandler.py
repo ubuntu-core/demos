@@ -43,7 +43,9 @@ class DataHandler(object):
         #    num_faces = -10
         file_path = os.path.join(os.getenv("SNAP"), "meta", "snap.yaml")
         with suppress(OSError):
-            os.remove(db_path)
+            with open(file_path, 'rt') as f:
+                if yaml.load(f.read())["version"] != 0.1:
+                    os.remove(db_path)
 
         self._conn = sqlite3.connect(db_path)
         c = self._conn.cursor()
