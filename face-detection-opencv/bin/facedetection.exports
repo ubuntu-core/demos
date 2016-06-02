@@ -1,0 +1,10 @@
+#!/bin/sh
+
+export PYTHONPATH="$SNAP/usr/lib/python2.7/dist-packages/:/usr/lib/python2.7/dist-packages"
+
+for triplet in "arm-linux-gnueabihf aarach64-linux-gnu x86_64-linux-gnu i386-linux-gnu"; do
+    LD_LIBRARY_PATH="$SNAP/lib/$triplet/mesa:$LD_LIBRARY_PATH"
+done
+export LD_LIBRARY_PATH="$SNAP/usr/lib/lapack:$SNAP/usr/lib/libblas:$LD_LIBRARY_PATH"
+
+exec "$SNAP/bin/facedetection" $*

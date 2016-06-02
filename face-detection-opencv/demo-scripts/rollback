@@ -1,0 +1,5 @@
+#!/bin/bash
+
+. working_version
+set -x
+sudo snappy set face-detection active=$WORKING_VERSION

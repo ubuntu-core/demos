@@ -1,0 +1,11 @@
+parts/
+snap/
+stage/
+*.snap
+
+*.pyc
+.bzr
+bower_components/
+
+*.sqlite
+*.png

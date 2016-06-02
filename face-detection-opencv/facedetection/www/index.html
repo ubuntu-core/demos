@@ -1,0 +1,107 @@
+<html>
+<head>
+  <title>Face detection stats!</title>
+  <meta name="viewport" content="width=device-width">
+
+  <!-- Chrome for Android theme color -->
+  <meta name="theme-color" content="#dd4814">
+  <!-- Tile color for Win8 -->
+  <meta name="msapplication-TileColor" content="#dd4814">
+
+  <!-- Add to homescreen for Chrome on Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="Face detection stats">
+  <link rel="icon" sizes="192x192" href="images/chrome-touch-icon-192x192.png">
+
+  <!-- Add to homescreen for Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Face detection stats">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+
+  <!-- Tile icon for Win8 (144x144) -->
+  <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+
+  <link rel="stylesheet" type="text/css" media="all" href="http://assets.ubuntu.com/sites/guidelines/css/responsive/latest/ubuntu-styles.css"/>
+  <script src="scripts/reconnecting-websocket.js"></script>
+
+  <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+  <link rel="import" href="elements/elements.html">
+  <style is="custom-style">
+    paper-toast {
+      --paper-toast-background-color: var(--canonical-aubergine);
+    }
+
+    iron-icon {
+      color: var(--ubuntu-orange);
+    }
+
+    #mainchart {
+      width: 100%;
+    }
+  </style>
+</head>
+<body unresolved>
+
+<header class="banner global" role="banner">
+  <nav role="navigation" class="nav-primary nav-right">
+    <div class="logo">
+      <a class="logo-ubuntu" href="/">
+        <img width="106" height="25" src="http://assets.ubuntu.com/sites/ubuntu/1044/u/img/logos/logo-ubuntu-orange.svg" alt="Ubuntu" />
+      </a>
+    </div>
+  </nav>
+</header>
+
+<div class="wrapper">
+  <div id="main-content" class="inner-wrapper">
+    <div class="row row-hero">
+      <h1>Popularity of the booth:</h1>
+    </div>
+
+    <template is="dom-bind" id="app">
+      <div class="row row-enterprise">
+        <google-chart
+          id="mainchart"
+          type='area'
+          options='{ "title": "Number of visitors at booth:",
+                     "legend": "none",
+                     "chartArea": {"width": "90%", "height": "80%"},
+                     "animation": {"duration": "2000"},
+                     "vAxis": {"format": "0"},
+                     "hAxis": {"textPosition": "none"},
+                     "series": { "0": { "color": "#dd4814" } }
+                   }'
+          cols='[{"label":"Time", "type":"number"}, {"label":"Numbers", "type":"number"}]'
+          rows$="{{data}}">
+        ></google-chart>
+      </div>
+      <div class="row">
+        <h2>Last screenshot with someone detected:</h2>
+        <img id="screenimg" src="dynamics/last_screen.png" />
+      </div>
+      <div class="row">
+        <div class="horizontal layout center-justified">
+          <paper-button id="restartButton" raised disabled$="{{!connected}}">Shut down and restart</paper-button>
+        </div>
+      </div>
+      <paper-toast text="Not connected to server" class="fit-bottom" opened$="{{!connected}}" duration="0"></paper-toast>
+    </template>
+  </div>
+</div>
+
+<footer class="global clearfix">
+  <div class="legal clearfix">
+    <p class="twelve-col">&copy; 2016 Canonical Ltd. Ubuntu and Canonical are registered trademarks of Canonical Ltd.</p>
+    <ul class="inline clear">
+      <li><a href="http://www.ubuntu.com/trademark-policy">Trademark policy</a></li>
+      <li><a href="http://www.ubuntu.com/legal">Legal information</a></li>
+      <li><a accesskey="8" href="http://www.ubuntu.com/privacy-policy">Privacy policy</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script src="scripts/app.js"></script>
+
+</body>
+</html>
