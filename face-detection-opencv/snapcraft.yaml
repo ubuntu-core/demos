@@ -6,6 +6,7 @@ description: |
   This demo shows face detection statics parameterized to take a picture through a webcam X seconds
   (timing between pictures can be defined in $SNAP_DATA/settings). Report results through a web interface
   on 8042 port (configurable as well).
+icon: facedetectionweb.png
 
 services:
   facedetectionweb:
