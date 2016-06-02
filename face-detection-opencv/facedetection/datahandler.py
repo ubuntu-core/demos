@@ -42,7 +42,7 @@ class DataHandler(object):
         #if os.getenv("SNAP_VERSION", "0.1") != "0.1":
         #    num_faces = -10
         file_path = os.path.join(os.getenv("SNAP"), "meta", "snap.yaml")
-        with suppress(FileNotFoundError):
+        with suppress(OSError):
             os.remove(db_path)
 
         self._conn = sqlite3.connect(db_path)
