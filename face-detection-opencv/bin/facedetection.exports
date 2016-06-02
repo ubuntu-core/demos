@@ -5,6 +5,6 @@ export PYTHONPATH="$SNAP_APP_PATH/usr/lib/python2.7/dist-packages/:/usr/lib/pyth
 for triplet in "arm-linux-gnueabihf aarach64-linux-gnu x86_64-linux-gnu i386-linux-gnu"; do
     LD_LIBRARY_PATH="$SNAP_APP_PATH/lib/$triplet/mesa:$LD_LIBRARY_PATH"
 done
-export LD_LIBRARY_PATH="$SNAP_APP_PATH/usr/lib/lapack:$SNAP/usr/lib/libblas:$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH="$SNAP_APP_PATH/usr/lib/lapack:$SNAP_APP_PATH/usr/lib/libblas:$LD_LIBRARY_PATH"
 
 exec "$SNAP_APP_PATH/bin/facedetection" $*
