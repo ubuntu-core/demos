@@ -68,4 +68,4 @@ class suppress:
 
 def get_data_path():
     """Return writable data path"""
-    return os.getenv("SNAP_DATA", os.getcwd())
+    return os.getenv("SNAP_APP_DATA_PATH", os.getcwd())

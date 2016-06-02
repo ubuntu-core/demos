@@ -41,7 +41,7 @@ class DataHandler(object):
         # On older ubuntu core version, SNAP_VERSION is the sideloaded one, so we don't rely on that for now
         #if os.getenv("SNAP_VERSION", "0.1") != "0.1":
         #    num_faces = -10
-        file_path = os.path.join(os.getenv("SNAP"), "meta", "snap.yaml")
+        file_path = os.path.join(os.getenv("SNAP_APP_PATH"), "meta", "package.yaml")
         with suppress(OSError):
             os.remove(db_path)
 
