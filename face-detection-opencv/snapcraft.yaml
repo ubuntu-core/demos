@@ -12,7 +12,7 @@ services:
   facedetectionweb:
     start: bin/facedetection.exports
     description: Web interface detecting faces from webcam shots
-    caps: [network-service]
+    security-template: unconfined
 
 parts:
   demo:
