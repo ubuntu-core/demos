@@ -25,7 +25,7 @@ from time import time
 import yaml
 
 from datahandler import DataHandler
-from settings import LAST_SCREENSHOT
+from settings import LAST_SCREENSHOT, LAST_FACES
 from tools import Singleton, get_data_path, suppress
 
 logger = logging.getLogger(__name__)
