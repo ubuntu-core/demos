@@ -40,6 +40,7 @@ class FaceDetection(object):
 
     def __init__(self):
         """Save last screenshot at """
+        self.faces_path = os.path.join(get_data_path(), LAST_FACES)
         self.screenshot_path = os.path.join(get_data_path(), LAST_SCREENSHOT)
 
     def detect_faces(self):
@@ -48,6 +49,11 @@ class FaceDetection(object):
         video_capture = cv2.VideoCapture(0)
         ret, image = video_capture.read()
         video_capture.release()
+
+        # write the raw image to screenshot_path
+        temp_file = "{}.new.png".format(self.screenshot_path)
+        cv2.imwrite(temp_file, image)
+        os.rename(temp_file, self.screenshot_path)
 
         # Detect faces in the image
         faces = self.faceCascade.detectMultiScale(
@@ -67,9 +73,9 @@ class FaceDetection(object):
             for (x, y, w, h) in faces:
                 cv2.rectangle(image, (x, y), (x + w, y + h), (255, 36, 36), 5)
 
-            temp_file = "{}.new.png".format(self.screenshot_path)
+            temp_file = "{}.new.png".format(self.faces_path)
             cv2.imwrite(temp_file, image)
-            os.rename(temp_file, self.screenshot_path)
+            os.rename(temp_file, self.faces_path)
             timestamp = time()
 
         # Introduce a bug on purpose in newer version
