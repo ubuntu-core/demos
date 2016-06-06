@@ -39,6 +39,11 @@
     #mainchart {
       width: 100%;
     }
+
+    .detectimg {
+      display:inline-block;
+      width: 49%;
+    }
   </style>
 </head>
 <body unresolved>
@@ -78,8 +83,8 @@
       </div>
       <div class="row">
         <h2>Last snapshot from booth and with faces detected:</h2>
-        <img id="screenimg" src="dynamics/last_screen.png" />
-        <img id="screenimg" src="dynamics/last_faces.png" />
+        <img id="screenimg" class="detectimg" src="dynamics/last_screen.png" />
+        <img id="facesimg" class="detectimg" src="dynamics/last_faces.png" />
       </div>
       <div class="row">
         <div class="horizontal layout center-justified">
